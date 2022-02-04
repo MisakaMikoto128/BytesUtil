@@ -367,6 +367,39 @@ void int642bytes(bu_int64 i,bu_byte* det,Endian endian);
 
 /* @section 5: bit reverse */
 
+/**
+ * @brief reverse the bits of a byte.
+ * 
+ * @param data original byte
+ * @return bit reversed byte 
+ */
+bu_byte bit_reverse8(bu_byte data);
+
+/**
+ * @brief reverse the bits of a uint16.
+ * 
+ * @param data original uint16 data
+ * @return bit reversed uint16
+ */
+bu_uint16 bit_reverse16(bu_uint16 data);
+
+/**
+ * @brief reverse the bits of a uint32.
+ * 
+ * @param data original uint32 data
+ * @return bit reversed uint32 
+ */
+bu_uint32 bit_reverse32(bu_uint32 data);
+
+
+/**
+ * @brief reverse the bits of a uint64.
+ * 
+ * @param data original uint64 data
+ * @return bit reversed uint64
+ */
+bu_uint64 bit_reverse64(bu_uint64 data);
+
 /* @section end: Summarize all methods into comment */
 /*
 Endian getEndian(bu_uint32 data);
@@ -393,6 +426,11 @@ void double2bytes(bu_double d,bu_byte* det,Endian endian);
 void int162bytes(bu_int16 i,bu_byte* det,Endian endian);
 void int322bytes(bu_int32 i,bu_byte* det,Endian endian);
 void int642bytes(bu_int64 i,bu_byte* det,Endian endian);
+
+bu_byte bit_reverse8(bu_byte data);
+bu_uint16 bit_reverse16(bu_uint16 data);
+bu_uint32 bit_reverse32(bu_uint32 data);
+bu_uint64 bit_reverse64(bu_uint64 data);
 */
 #ifdef __cplusplus
 }

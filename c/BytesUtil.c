@@ -83,13 +83,15 @@ bu_float bytes2floatr(const bu_byte *bytes, Endian endian)
  *
  * @note the bytes data must be at least  8 bytes.
  */
-bu_double bytes2doubler(const bu_byte *bytes, Endian endian){
+bu_double bytes2doubler(const bu_byte *bytes, Endian endian)
+{
     union
     {
         bu_double d;
         bu_byte b[8];
     } u;
-    if(endian == LITTLE_ENDIAN){
+    if (endian == LITTLE_ENDIAN)
+    {
         u.b[0] = bytes[7];
         u.b[1] = bytes[6];
         u.b[2] = bytes[5];
@@ -98,7 +100,9 @@ bu_double bytes2doubler(const bu_byte *bytes, Endian endian){
         u.b[5] = bytes[2];
         u.b[6] = bytes[1];
         u.b[7] = bytes[0];
-    }else{
+    }
+    else
+    {
         u.b[0] = bytes[0];
         u.b[1] = bytes[1];
         u.b[2] = bytes[2];
@@ -119,16 +123,20 @@ bu_double bytes2doubler(const bu_byte *bytes, Endian endian){
  *
  * @note the bytes data must be at least  2 bytes.
  */
-bu_int16 bytes2int16r(const bu_byte *bytes, Endian endian){
+bu_int16 bytes2int16r(const bu_byte *bytes, Endian endian)
+{
     union
     {
         bu_int16 i;
         bu_byte b[2];
     } u;
-    if(endian == LITTLE_ENDIAN){
+    if (endian == LITTLE_ENDIAN)
+    {
         u.b[0] = bytes[1];
         u.b[1] = bytes[0];
-    }else{
+    }
+    else
+    {
         u.b[0] = bytes[0];
         u.b[1] = bytes[1];
     }
@@ -144,18 +152,22 @@ bu_int16 bytes2int16r(const bu_byte *bytes, Endian endian){
  *
  * @note the bytes data must be at least  be 4 bytes.
  */
-bu_int32 bytes2int32r(const bu_byte *bytes, Endian endian){
+bu_int32 bytes2int32r(const bu_byte *bytes, Endian endian)
+{
     union
     {
         bu_int32 i;
         bu_byte b[4];
     } u;
-    if(endian == LITTLE_ENDIAN){
+    if (endian == LITTLE_ENDIAN)
+    {
         u.b[0] = bytes[3];
         u.b[1] = bytes[2];
         u.b[2] = bytes[1];
         u.b[3] = bytes[0];
-    }else{
+    }
+    else
+    {
         u.b[0] = bytes[0];
         u.b[1] = bytes[1];
         u.b[2] = bytes[2];
@@ -173,13 +185,15 @@ bu_int32 bytes2int32r(const bu_byte *bytes, Endian endian){
  *
  * @note the bytes data must be at least  be 8 bytes.
  */
-bu_int64 bytes2int64r(const bu_byte *bytes, Endian endian){
+bu_int64 bytes2int64r(const bu_byte *bytes, Endian endian)
+{
     union
     {
         bu_int64 i;
         bu_byte b[8];
     } u;
-if(endian == LITTLE_ENDIAN){
+    if (endian == LITTLE_ENDIAN)
+    {
         u.b[0] = bytes[7];
         u.b[1] = bytes[6];
         u.b[2] = bytes[5];
@@ -188,7 +202,9 @@ if(endian == LITTLE_ENDIAN){
         u.b[5] = bytes[2];
         u.b[6] = bytes[1];
         u.b[7] = bytes[0];
-    }else{
+    }
+    else
+    {
         u.b[0] = bytes[0];
         u.b[1] = bytes[1];
         u.b[2] = bytes[2];
@@ -211,13 +227,17 @@ if(endian == LITTLE_ENDIAN){
  *
  * @note the bytes data must be at least  4 bytes.
  */
-void bytes2floatp(const bu_byte *bytes, bu_float *dst, Endian endian){
-    if(endian == LITTLE_ENDIAN){
+void bytes2floatp(const bu_byte *bytes, bu_float *dst, Endian endian)
+{
+    if (endian == LITTLE_ENDIAN)
+    {
         dst[0] = bytes[3];
         dst[1] = bytes[2];
         dst[2] = bytes[1];
         dst[3] = bytes[0];
-    }else{
+    }
+    else
+    {
         dst[0] = bytes[0];
         dst[1] = bytes[1];
         dst[2] = bytes[2];
@@ -235,8 +255,10 @@ void bytes2floatp(const bu_byte *bytes, bu_float *dst, Endian endian){
  *
  * @note the bytes data must be at least  8 bytes.
  */
-void bytes2doublep(const bu_byte *bytes, bu_double *dst, Endian endian){
-    if(endian == LITTLE_ENDIAN){
+void bytes2doublep(const bu_byte *bytes, bu_double *dst, Endian endian)
+{
+    if (endian == LITTLE_ENDIAN)
+    {
         dst[0] = bytes[7];
         dst[1] = bytes[6];
         dst[2] = bytes[5];
@@ -245,7 +267,9 @@ void bytes2doublep(const bu_byte *bytes, bu_double *dst, Endian endian){
         dst[5] = bytes[2];
         dst[6] = bytes[1];
         dst[7] = bytes[0];
-    }else{
+    }
+    else
+    {
         dst[0] = bytes[0];
         dst[1] = bytes[1];
         dst[2] = bytes[2];
@@ -267,11 +291,15 @@ void bytes2doublep(const bu_byte *bytes, bu_double *dst, Endian endian){
  *
  * @note the bytes data must be at least  2 bytes.
  */
-void bytes2int16p(const bu_byte *bytes, bu_int16 *dst, Endian endian){
-    if(endian == LITTLE_ENDIAN){
+void bytes2int16p(const bu_byte *bytes, bu_int16 *dst, Endian endian)
+{
+    if (endian == LITTLE_ENDIAN)
+    {
         dst[0] = bytes[1];
         dst[1] = bytes[0];
-    }else{
+    }
+    else
+    {
         dst[0] = bytes[0];
         dst[1] = bytes[1];
     }
@@ -287,13 +315,17 @@ void bytes2int16p(const bu_byte *bytes, bu_int16 *dst, Endian endian){
  *
  * @note the bytes data must be at least  be 4 bytes.
  */
-void bytes2int32p(const bu_byte *bytes, bu_int32 *dst, Endian endian){
-    if(endian == LITTLE_ENDIAN){
+void bytes2int32p(const bu_byte *bytes, bu_int32 *dst, Endian endian)
+{
+    if (endian == LITTLE_ENDIAN)
+    {
         dst[0] = bytes[3];
         dst[1] = bytes[2];
         dst[2] = bytes[1];
         dst[3] = bytes[0];
-    }else{
+    }
+    else
+    {
         dst[0] = bytes[0];
         dst[1] = bytes[1];
         dst[2] = bytes[2];
@@ -311,8 +343,10 @@ void bytes2int32p(const bu_byte *bytes, bu_int32 *dst, Endian endian){
  *
  * @note the bytes data must be at least  be 8 bytes.
  */
-void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, Endian endian){
-    if(endian == LITTLE_ENDIAN){
+void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, Endian endian)
+{
+    if (endian == LITTLE_ENDIAN)
+    {
         dst[0] = bytes[7];
         dst[1] = bytes[6];
         dst[2] = bytes[5];
@@ -321,7 +355,9 @@ void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, Endian endian){
         dst[5] = bytes[2];
         dst[6] = bytes[1];
         dst[7] = bytes[0];
-    }else{
+    }
+    else
+    {
         dst[0] = bytes[0];
         dst[1] = bytes[1];
         dst[2] = bytes[2];
@@ -343,7 +379,8 @@ void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, Endian endian){
  *
  * @note the bytes data must be at least  2 bytes.
  */
-void reverse2bytes(const bu_byte *bytes, bu_byte *det){
+void reverse2bytes(const bu_byte *bytes, bu_byte *det)
+{
     det[0] = bytes[1];
     det[1] = bytes[0];
 }
@@ -357,7 +394,8 @@ void reverse2bytes(const bu_byte *bytes, bu_byte *det){
  *
  * @note the bytes data must be at least  4 bytes.
  */
-void reverse4bytes(const bu_byte *bytes, bu_byte *det){
+void reverse4bytes(const bu_byte *bytes, bu_byte *det)
+{
     det[0] = bytes[3];
     det[1] = bytes[2];
     det[2] = bytes[1];
@@ -373,7 +411,8 @@ void reverse4bytes(const bu_byte *bytes, bu_byte *det){
  *
  * @note the bytes data must be at least 8 bytes.
  */
-void reverse8bytes(const bu_byte *bytes, bu_byte *det){
+void reverse8bytes(const bu_byte *bytes, bu_byte *det)
+{
     det[0] = bytes[7];
     det[1] = bytes[6];
     det[2] = bytes[5];
@@ -394,9 +433,11 @@ void reverse8bytes(const bu_byte *bytes, bu_byte *det){
  *
  * @note the bytes data must be at least  n bytes.
  */
-void reverseNbytes(const bu_byte *bytes, bu_byte *det, bu_size_t n){
+void reverseNbytes(const bu_byte *bytes, bu_byte *det, bu_size_t n)
+{
     bu_size_t i = 0;
-    for(i = 0; i < n; i++){
+    for (i = 0; i < n; i++)
+    {
         det[i] = bytes[n - i - 1];
     }
 }
@@ -412,14 +453,18 @@ void reverseNbytes(const bu_byte *bytes, bu_byte *det, bu_size_t n){
  *
  * @note the bytes data will be at least 4 bytes space.
  */
-void float2bytes(bu_float f, bu_byte *det, Endian endian){
+void float2bytes(bu_float f, bu_byte *det, Endian endian)
+{
     bu_byte *p = (bu_byte *)&f;
-    if(endian == LITTLE_ENDIAN){
+    if (endian == LITTLE_ENDIAN)
+    {
         det[0] = p[3];
         det[1] = p[2];
         det[2] = p[1];
         det[3] = p[0];
-    }else{
+    }
+    else
+    {
         det[0] = p[0];
         det[1] = p[1];
         det[2] = p[2];
@@ -437,9 +482,11 @@ void float2bytes(bu_float f, bu_byte *det, Endian endian){
  *
  * @note the bytes data will be at least 8 bytes space.
  */
-void double2bytes(bu_double d, bu_byte *det, Endian endian){
+void double2bytes(bu_double d, bu_byte *det, Endian endian)
+{
     bu_byte *p = (bu_byte *)&d;
-    if(endian == LITTLE_ENDIAN){
+    if (endian == LITTLE_ENDIAN)
+    {
         det[0] = p[7];
         det[1] = p[6];
         det[2] = p[5];
@@ -448,7 +495,9 @@ void double2bytes(bu_double d, bu_byte *det, Endian endian){
         det[5] = p[2];
         det[6] = p[1];
         det[7] = p[0];
-    }else{
+    }
+    else
+    {
         det[0] = p[0];
         det[1] = p[1];
         det[2] = p[2];
@@ -470,12 +519,16 @@ void double2bytes(bu_double d, bu_byte *det, Endian endian){
  *
  * @note the bytes data will be at least 2 bytes space.
  */
-void int162bytes(bu_int16 i, bu_byte *det, Endian endian){
-    bu_byte * p = (bu_byte *)&i;
-    if(endian == LITTLE_ENDIAN){
+void int162bytes(bu_int16 i, bu_byte *det, Endian endian)
+{
+    bu_byte *p = (bu_byte *)&i;
+    if (endian == LITTLE_ENDIAN)
+    {
         det[0] = p[1];
         det[1] = p[0];
-    }else{
+    }
+    else
+    {
         det[0] = p[0];
         det[1] = p[1];
     }
@@ -491,14 +544,18 @@ void int162bytes(bu_int16 i, bu_byte *det, Endian endian){
  *
  * @note the bytes data will be at least 4 bytes space.
  */
-void int322bytes(bu_int32 i, bu_byte *det, Endian endian){
-    bu_byte * p = (bu_byte *)&i;
-    if(endian == LITTLE_ENDIAN){
+void int322bytes(bu_int32 i, bu_byte *det, Endian endian)
+{
+    bu_byte *p = (bu_byte *)&i;
+    if (endian == LITTLE_ENDIAN)
+    {
         det[0] = p[3];
         det[1] = p[2];
         det[2] = p[1];
         det[3] = p[0];
-    }else{
+    }
+    else
+    {
         det[0] = p[0];
         det[1] = p[1];
         det[2] = p[2];
@@ -516,9 +573,11 @@ void int322bytes(bu_int32 i, bu_byte *det, Endian endian){
  *
  * @note the bytes data will be at least 8 bytes space.
  */
-void int642bytes(bu_int64 i, bu_byte *det, Endian endian){
-    bu_byte * p = (bu_byte *)&i;
-    if(endian == LITTLE_ENDIAN){
+void int642bytes(bu_int64 i, bu_byte *det, Endian endian)
+{
+    bu_byte *p = (bu_byte *)&i;
+    if (endian == LITTLE_ENDIAN)
+    {
         det[0] = p[7];
         det[1] = p[6];
         det[2] = p[5];
@@ -527,7 +586,9 @@ void int642bytes(bu_int64 i, bu_byte *det, Endian endian){
         det[5] = p[2];
         det[6] = p[1];
         det[7] = p[0];
-    }else{
+    }
+    else
+    {
         det[0] = p[0];
         det[1] = p[1];
         det[2] = p[2];
@@ -537,4 +598,63 @@ void int642bytes(bu_int64 i, bu_byte *det, Endian endian){
         det[6] = p[6];
         det[7] = p[7];
     }
+}
+
+/* @section 5: bit reverse */
+
+/**
+ * @brief reverse the bits of a byte.
+ *
+ * @param data original byte
+ * @return bit reversed byte
+ */
+bu_byte bit_reverse8(bu_byte data)
+{
+    data = (((data & 0xaa) >> 1) | ((data & 0x55) << 1));
+    data = (((data & 0xcc) >> 2) | ((data & 0x33) << 2));
+    data = (((data & 0xf0) >> 4) | ((data & 0x0f) << 4));
+    return ((data >> 8) | (data << 8));
+}
+
+/**
+ * @brief reverse the bits of a uint16.
+ *
+ * @param data original uint16 data
+ * @return bit reversed uint16
+ */
+bu_uint16 bit_reverse16(bu_uint16 data)
+{
+    data = (((data & 0xaaaa) >> 1) | ((data & 0x5555) << 1));
+    data = (((data & 0xcccc) >> 2) | ((data & 0x3333) << 2));
+}
+
+/**
+ * @brief reverse the bits of a uint32.
+ *
+ * @param data original uint32 data
+ * @return bit reversed uint32
+ */
+bu_uint32 bit_reverse32(bu_uint32 data)
+{
+    data = (((data & 0xaaaaaaaa) >> 1) | ((data & 0x55555555) << 1));
+    data = (((data & 0xcccccccc) >> 2) | ((data & 0x33333333) << 2));
+    data = (((data & 0xf0f0f0f0) >> 4) | ((data & 0x0f0f0f0f) << 4));
+    data = (((data & 0xff00ff00) >> 8) | ((data & 0x00ff00ff) << 8));
+    return ((data >> 16) | (data << 16));
+}
+
+/**
+ * @brief reverse the bits of a uint64.
+ *
+ * @param data original uint64 data
+ * @return bit reversed uint64
+ */
+bu_uint64 bit_reverse64(bu_uint64 data)
+{
+    data = (((data & 0xaaaaaaaaaaaaaaaa) >> 1) | ((data & 0x5555555555555555) << 1));
+    data = (((data & 0xcccccccccccccccc) >> 2) | ((data & 0x3333333333333333) << 2));
+    data = (((data & 0xf0f0f0f0f0f0f0f0) >> 4) | ((data & 0x0f0f0f0f0f0f0f0f) << 4));
+    data = (((data & 0xff00ff00ff00ff00) >> 8) | ((data & 0x00ff00ff00ff00ff) << 8));
+    data = (((data & 0xffff0000ffff0000) >> 16) | ((data & 0x0000ffff0000ffff) << 16));
+    return ((data >> 32) | (data << 32));
 }
