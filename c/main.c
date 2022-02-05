@@ -7,34 +7,21 @@ int main()
     Endian endian = getSelfEndian();
     printf("%s\n", endian == BIG_ENDIAN ? "BIG_ENDIAN" : "LITTLE_ENDIAN");
 
-    // test endian
-    int i = 0;
-    // bu_uint32 data= 0x12345678;
-    // bu_byte *bytes = (bu_byte *)&data;
+    // show peer endian
+    bu_uint32 peerEndianJudgeData = ENDIA_JUDGE_DATA;
+    Endian endian = getEndian(peerEndianJudgeData);
+    printf("%s\n", endian == BIG_ENDIAN ? "BIG_ENDIAN" : "LITTLE_ENDIAN");
+
+
+    // test data parse
     bu_byte bytes[4] = {0x12, 0x34, 0x56, 0x78};
-    union
-    {
-        bu_int32 i;
-        bu_byte b[4];
-    } u;
-
-     *((bu_int32 *)&u) = *((bu_int32 *)bytes);
-
-    // u.b[0] = bytes[0];
-    // u.b[1] = bytes[1];
-    // u.b[2] = bytes[2];
-    // u.b[3] = bytes[3];
-
-    // u.b[0] = bytes[3];
-    // u.b[1] = bytes[2];
-    // u.b[2] = bytes[1];
-    // u.b[3] = bytes[0];
-    bu_int32 a = u.i;
-    for(i = 0; i < 4; i++)
-    {
-        printf("%#x\n", u.b[i]);
-    }
-    printf("%#x\n", a);
+    bu_uint32 data1 = bytes2int32r(bytes,false);
+    bu_uint32 data2 = bytes2int32r(bytes,true);
+    printf("data1:%d,data2:%d\n",data1,data2);
+    // test pointer parse
+    bu_uint32 data3 = 0;
+    bytes2int32p(bytes,&data3,false);
+    printf("data3:%d\n",data3);
 
     return 0;
 }

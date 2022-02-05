@@ -59,10 +59,7 @@ bu_float bytes2floatr(const bu_byte *bytes, bool change_endian)
     } u;
     if (change_endian)
     {
-        u.b[0] = bytes[3];
-        u.b[1] = bytes[2];
-        u.b[2] = bytes[1];
-        u.b[3] = bytes[0];
+        REVERSE_4_BYTES_P(u.b, bytes);
     }
     else
     {
@@ -89,14 +86,7 @@ bu_double bytes2doubler(const bu_byte *bytes, bool change_endian)
     } u;
     if (change_endian)
     {
-        u.b[0] = bytes[7];
-        u.b[1] = bytes[6];
-        u.b[2] = bytes[5];
-        u.b[3] = bytes[4];
-        u.b[4] = bytes[3];
-        u.b[5] = bytes[2];
-        u.b[6] = bytes[1];
-        u.b[7] = bytes[0];
+        REVERSE_2_BYTES_P(u.b, bytes);
     }
     else
     {
@@ -122,8 +112,7 @@ bu_int16 bytes2int16r(const bu_byte *bytes, bool change_endian)
     } u;
     if (change_endian)
     {
-        u.b[0] = bytes[1];
-        u.b[1] = bytes[0];
+        REVERSE_2_BYTES_P(u.b, bytes);
     }
     else
     {
@@ -150,10 +139,7 @@ bu_int32 bytes2int32r(const bu_byte *bytes, bool change_endian)
     } u;
     if (change_endian)
     {
-        u.b[0] = bytes[3];
-        u.b[1] = bytes[2];
-        u.b[2] = bytes[1];
-        u.b[3] = bytes[0];
+        REVERSE_4_BYTES_P(u.b, bytes);
     }
     else
     {
@@ -180,14 +166,7 @@ bu_int64 bytes2int64r(const bu_byte *bytes, bool change_endian)
     } u;
     if (change_endian)
     {
-        u.b[0] = bytes[7];
-        u.b[1] = bytes[6];
-        u.b[2] = bytes[5];
-        u.b[3] = bytes[4];
-        u.b[4] = bytes[3];
-        u.b[5] = bytes[2];
-        u.b[6] = bytes[1];
-        u.b[7] = bytes[0];
+        REVERSE_8_BYTES_P(u.b, bytes);
     }
     else
     {
@@ -210,10 +189,7 @@ void bytes2floatp(const bu_byte *bytes, bu_float *dst, bool change_endian)
 {
     if (change_endian)
     {
-        dst[0] = bytes[3];
-        dst[1] = bytes[2];
-        dst[2] = bytes[1];
-        dst[3] = bytes[0];
+        REVERSE_4_BYTES_P(dst, bytes);
     }
     else
     {
@@ -235,14 +211,7 @@ void bytes2doublep(const bu_byte *bytes, bu_double *dst, bool change_endian)
 {
     if (change_endian)
     {
-        dst[0] = bytes[7];
-        dst[1] = bytes[6];
-        dst[2] = bytes[5];
-        dst[3] = bytes[4];
-        dst[4] = bytes[3];
-        dst[5] = bytes[2];
-        dst[6] = bytes[1];
-        dst[7] = bytes[0];
+        REVERSE_8_BYTES_P(dst, bytes);
     }
     else
     {
@@ -264,8 +233,7 @@ void bytes2int16p(const bu_byte *bytes, bu_int16 *dst, bool change_endian)
 {
     if (change_endian)
     {
-        dst[0] = bytes[1];
-        dst[1] = bytes[0];
+        REVERSE_2_BYTES_P(dst, bytes);
     }
     else
     {
@@ -287,10 +255,7 @@ void bytes2int32p(const bu_byte *bytes, bu_int32 *dst, bool change_endian)
 {
     if (change_endian)
     {
-        dst[0] = bytes[3];
-        dst[1] = bytes[2];
-        dst[2] = bytes[1];
-        dst[3] = bytes[0];
+        REVERSE_4_BYTES_P(dst, bytes);
     }
     else
     {
@@ -312,14 +277,7 @@ void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, bool change_endian)
 {
     if (change_endian)
     {
-        dst[0] = bytes[7];
-        dst[1] = bytes[6];
-        dst[2] = bytes[5];
-        dst[3] = bytes[4];
-        dst[4] = bytes[3];
-        dst[5] = bytes[2];
-        dst[6] = bytes[1];
-        dst[7] = bytes[0];
+        REVERSE_8_BYTES_P(dst, bytes);
     }
     else
     {
@@ -332,71 +290,60 @@ void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, bool change_endian)
  * @brief 2 bytes reverse.
  *
  * @param bytes byes data
- * @param det : the pointer to a byte * which will be assigned the reversed bytes.
+ * @param dst : the pointer to a byte * which will be assigned the reversed bytes.
  * @return void
  *
  * @note the bytes data must be at least  2 bytes.
  */
-void reverse2bytes(const bu_byte *bytes, bu_byte *det)
+void reverse2bytes(const bu_byte *bytes, bu_byte *dst)
 {
-    det[0] = bytes[1];
-    det[1] = bytes[0];
+    REVERSE_2_BYTES_P(dst, bytes);
 }
 
 /**
  * @brief 4 bytes reverse.
  *
  * @param bytes byes data
- * @param det : the pointer to a byte * which will be assigned the reversed bytes.
+ * @param dst : the pointer to a byte * which will be assigned the reversed bytes.
  * @return void
  *
  * @note the bytes data must be at least  4 bytes.
  */
-void reverse4bytes(const bu_byte *bytes, bu_byte *det)
+void reverse4bytes(const bu_byte *bytes, bu_byte *dst)
 {
-    det[0] = bytes[3];
-    det[1] = bytes[2];
-    det[2] = bytes[1];
-    det[3] = bytes[0];
+    REVERSE_4_BYTES_P(dst, bytes);
 }
 
 /**
  * @brief 8 bytes reverse.
  *
  * @param bytes byes data
- * @param det : the pointer to a byte * which will be assigned the reversed bytes.
+ * @param dst : the pointer to a byte * which will be assigned the reversed bytes.
  * @return void
  *
  * @note the bytes data must be at least 8 bytes.
  */
-void reverse8bytes(const bu_byte *bytes, bu_byte *det)
+void reverse8bytes(const bu_byte *bytes, bu_byte *dst)
 {
-    det[0] = bytes[7];
-    det[1] = bytes[6];
-    det[2] = bytes[5];
-    det[3] = bytes[4];
-    det[4] = bytes[3];
-    det[5] = bytes[2];
-    det[6] = bytes[1];
-    det[7] = bytes[0];
+    REVERSE_8_BYTES_P(dst, bytes);
 }
 
 /**
  * @brief n bytes reverse.
  *
  * @param bytes byes data
- * @param det : the pointer to a byte * which will be assigned the reversed bytes.
+ * @param dst : the pointer to a byte * which will be assigned the reversed bytes.
  * @param n : the number of bytes to be reversed.
  * @return void
  *
  * @note the bytes data must be at least  n bytes.
  */
-void reverseNbytes(const bu_byte *bytes, bu_byte *det, bu_size_t n)
+void reverseNbytes(const bu_byte *bytes, bu_byte *dst, bu_size_t n)
 {
     bu_size_t i = 0;
     for (i = 0; i < n; i++)
     {
-        det[i] = bytes[n - i - 1];
+        dst[i] = bytes[n - i - 1];
     }
 }
 
@@ -405,25 +352,22 @@ void reverseNbytes(const bu_byte *bytes, bu_byte *det, bu_size_t n)
  * @brief convert a float to bytes.
  *
  * @param f : the float to be converted.
- * @param det : the pointer to a byte * which will be assigned the converted bytes.
+ * @param dst : the pointer to a byte * which will be assigned the converted bytes.
  * @param endian
  * @return void
  *
  * @note the bytes data will be at least 4 bytes space.
  */
-void float2bytes(bu_float f, bu_byte *det, bool change_endian)
+void float2bytes(bu_float f, bu_byte *dst, bool change_endian)
 {
     bu_byte *p = (bu_byte *)&f;
     if (change_endian)
     {
-        det[0] = p[3];
-        det[1] = p[2];
-        det[2] = p[1];
-        det[3] = p[0];
+        REVERSE_4_BYTES_P(dst, p);
     }
     else
     {
-        *((bu_float*)det) = f;
+        *((bu_float*)dst) = f;
     }
 }
 
@@ -431,29 +375,22 @@ void float2bytes(bu_float f, bu_byte *det, bool change_endian)
  * @brief convert a double to bytes.
  *
  * @param d : the double to be converted.
- * @param det : the pointer to a byte * which will be assigned the converted bytes.
+ * @param dst : the pointer to a byte * which will be assigned the converted bytes.
  * @param endian
  * @return void
  *
  * @note the bytes data will be at least 8 bytes space.
  */
-void double2bytes(bu_double d, bu_byte *det, bool change_endian)
+void double2bytes(bu_double d, bu_byte *dst, bool change_endian)
 {
     bu_byte *p = (bu_byte *)&d;
     if (change_endian)
     {
-        det[0] = p[7];
-        det[1] = p[6];
-        det[2] = p[5];
-        det[3] = p[4];
-        det[4] = p[3];
-        det[5] = p[2];
-        det[6] = p[1];
-        det[7] = p[0];
+        REVERSE_8_BYTES_P(dst, p);
     }
     else
     {
-        *((bu_double*)det) = d;
+        *((bu_double*)dst) = d;
     }
 }
 
@@ -461,23 +398,22 @@ void double2bytes(bu_double d, bu_byte *det, bool change_endian)
  * @brief convert a int16 to bytes.
  *
  * @param i : the int16 to be converted.
- * @param det : the pointer to a byte * which will be assigned the converted bytes.
+ * @param dst : the pointer to a byte * which will be assigned the converted bytes.
  * @param endian
  * @return void
  *
  * @note the bytes data will be at least 2 bytes space.
  */
-void int162bytes(bu_int16 i, bu_byte *det, bool change_endian)
+void int162bytes(bu_int16 i, bu_byte *dst, bool change_endian)
 {
     bu_byte *p = (bu_byte *)&i;
     if (change_endian)
     {
-        det[0] = p[1];
-        det[1] = p[0];
+        REVERSE_2_BYTES_P(dst, p);
     }
     else
     {
-        *((bu_int16*)det) = i;
+        *((bu_int16*)dst) = i;
     }
 }
 
@@ -485,25 +421,22 @@ void int162bytes(bu_int16 i, bu_byte *det, bool change_endian)
  * @brief convert a int32 to bytes.
  *
  * @param i : the int32 to be converted.
- * @param det : the pointer to a byte * which will be assigned the converted bytes.
+ * @param dst : the pointer to a byte * which will be assigned the converted bytes.
  * @param endian
  * @return void
  *
  * @note the bytes data will be at least 4 bytes space.
  */
-void int322bytes(bu_int32 i, bu_byte *det, bool change_endian)
+void int322bytes(bu_int32 i, bu_byte *dst, bool change_endian)
 {
     bu_byte *p = (bu_byte *)&i;
     if (change_endian)
     {
-        det[0] = p[3];
-        det[1] = p[2];
-        det[2] = p[1];
-        det[3] = p[0];
+        REVERSE_4_BYTES_P(dst, p);
     }
     else
     {
-        *((bu_int32*)det) = i;
+        *((bu_int32*)dst) = i;
     }
 }
 
@@ -511,29 +444,22 @@ void int322bytes(bu_int32 i, bu_byte *det, bool change_endian)
  * @brief convert a int64 to bytes.
  *
  * @param i : the int64 to be converted.
- * @param det : the pointer to a byte * which will be assigned the converted bytes.
+ * @param dst : the pointer to a byte * which will be assigned the converted bytes.
  * @param endian
  * @return void
  *
  * @note the bytes data will be at least 8 bytes space.
  */
-void int642bytes(bu_int64 i, bu_byte *det, bool change_endian)
+void int642bytes(bu_int64 i, bu_byte *dst, bool change_endian)
 {
     bu_byte *p = (bu_byte *)&i;
     if (change_endian)
     {
-        det[0] = p[7];
-        det[1] = p[6];
-        det[2] = p[5];
-        det[3] = p[4];
-        det[4] = p[3];
-        det[5] = p[2];
-        det[6] = p[1];
-        det[7] = p[0];
+        REVERSE_8_BYTES_P(dst, p);
     }
     else
     {
-        *((bu_int64*)det) = i;
+        *((bu_int64*)dst) = i;
     }
 }
 
