@@ -140,7 +140,7 @@ Endian getSelfEndian();
  * 
  * @note the bytes data must be at least  4 bytes.
  */
-bu_float bytes2floatr(const bu_byte* bytes,Endian endian);
+bu_float bytes2floatr(const bu_byte* bytes,bool change_endian);
 
 /**
  * @brief convert bytes[0-8] to a double.
@@ -151,7 +151,7 @@ bu_float bytes2floatr(const bu_byte* bytes,Endian endian);
  * 
  * @note the bytes data must be at least  8 bytes.
  */
-bu_double bytes2doubler(const bu_byte* bytes,Endian endian);
+bu_double bytes2doubler(const bu_byte* bytes,bool change_endian);
 
 /**
  * @brief convert bytes[0-2] to a int16.
@@ -162,7 +162,7 @@ bu_double bytes2doubler(const bu_byte* bytes,Endian endian);
  * 
  * @note the bytes data must be at least  2 bytes.
  */
-bu_int16 bytes2int16r(const bu_byte* bytes,Endian endian);
+bu_int16 bytes2int16r(const bu_byte* bytes,bool change_endian);
 
 /**
  * @brief convert bytes[0-4] to a int32.
@@ -173,7 +173,7 @@ bu_int16 bytes2int16r(const bu_byte* bytes,Endian endian);
  * 
  * @note the bytes data must be at least  be 4 bytes.
  */
-bu_int32 bytes2int32r(const bu_byte* bytes,Endian endian);
+bu_int32 bytes2int32r(const bu_byte* bytes,bool change_endian);
 
 /**
  * @brief convert bytes[0-8] to a int64.
@@ -184,7 +184,7 @@ bu_int32 bytes2int32r(const bu_byte* bytes,Endian endian);
  * 
  * @note the bytes data must be at least  be 8 bytes.
  */
-bu_int64 bytes2int64r(const bu_byte* bytes,Endian endian);
+bu_int64 bytes2int64r(const bu_byte* bytes,bool change_endian);
 
 /* @section 2: pointer method */
 /**
@@ -197,7 +197,7 @@ bu_int64 bytes2int64r(const bu_byte* bytes,Endian endian);
  * 
  * @note the bytes data must be at least  4 bytes.
  */
-void bytes2floatp(const bu_byte* bytes,bu_float *dst,Endian endian);
+void bytes2floatp(const bu_byte* bytes,bu_float *dst,bool change_endian);
 
 /**
  * @brief convert bytes[0-8] to a double.
@@ -209,7 +209,7 @@ void bytes2floatp(const bu_byte* bytes,bu_float *dst,Endian endian);
  * 
  * @note the bytes data must be at least  8 bytes.
  */
-void bytes2doublep(const bu_byte* bytes,bu_double *dst,Endian endian);
+void bytes2doublep(const bu_byte* bytes,bu_double *dst,bool change_endian);
 
 
 /**
@@ -222,7 +222,7 @@ void bytes2doublep(const bu_byte* bytes,bu_double *dst,Endian endian);
  * 
  * @note the bytes data must be at least  2 bytes.
  */
-void bytes2int16p(const bu_byte* bytes,bu_int16 *dst,Endian endian);
+void bytes2int16p(const bu_byte* bytes,bu_int16 *dst,bool change_endian);
 
 
 /**
@@ -235,7 +235,7 @@ void bytes2int16p(const bu_byte* bytes,bu_int16 *dst,Endian endian);
  * 
  * @note the bytes data must be at least  be 4 bytes.
  */
-void bytes2int32p(const bu_byte* bytes,bu_int32 *dst,Endian endian);
+void bytes2int32p(const bu_byte* bytes,bu_int32 *dst,bool change_endian);
 
 
 /**
@@ -248,7 +248,7 @@ void bytes2int32p(const bu_byte* bytes,bu_int32 *dst,Endian endian);
  * 
  * @note the bytes data must be at least  be 8 bytes.
  */
-void bytes2int64p(const bu_byte* bytes,bu_int64 *dst,Endian endian);
+void bytes2int64p(const bu_byte* bytes,bu_int64 *dst,bool change_endian);
 
 
 /* @section 3: bytes reverse */
@@ -312,7 +312,7 @@ void reverseNbytes(const bu_byte* bytes,bu_byte* det,bu_size_t n);
  * 
  * @note the bytes data will be at least 4 bytes space.
  */
-void float2bytes(bu_float f,bu_byte* det,Endian endian);
+void float2bytes(bu_float f,bu_byte* det,bool change_endian);
 
 
 /**
@@ -325,7 +325,7 @@ void float2bytes(bu_float f,bu_byte* det,Endian endian);
  * 
  * @note the bytes data will be at least 8 bytes space.
  */
-void double2bytes(bu_double d,bu_byte* det,Endian endian);
+void double2bytes(bu_double d,bu_byte* det,bool change_endian);
 
 
 /**
@@ -338,7 +338,7 @@ void double2bytes(bu_double d,bu_byte* det,Endian endian);
  * 
  * @note the bytes data will be at least 2 bytes space.
  */
-void int162bytes(bu_int16 i,bu_byte* det,Endian endian);
+void int162bytes(bu_int16 i,bu_byte* det,bool change_endian);
 
 
 /**
@@ -351,7 +351,7 @@ void int162bytes(bu_int16 i,bu_byte* det,Endian endian);
  * 
  * @note the bytes data will be at least 4 bytes space.
  */
-void int322bytes(bu_int32 i,bu_byte* det,Endian endian);
+void int322bytes(bu_int32 i,bu_byte* det,bool change_endian);
 
 
 /**
@@ -364,7 +364,7 @@ void int322bytes(bu_int32 i,bu_byte* det,Endian endian);
  * 
  * @note the bytes data will be at least 8 bytes space.
  */
-void int642bytes(bu_int64 i,bu_byte* det,Endian endian);
+void int642bytes(bu_int64 i,bu_byte* det,bool change_endian);
 
 /* @section 5: bit reverse */
 
@@ -405,28 +405,28 @@ bu_uint64 bit_reverse64(bu_uint64 data);
 /*
 Endian getEndian(bu_uint32 data);
 
-bu_float bytes2floatr(const bu_byte* bytes,Endian endian);
-bu_double bytes2doubler(const bu_byte* bytes,Endian endian);
-bu_int16 bytes2int16r(const bu_byte* bytes,Endian endian);
-bu_int32 bytes2int32r(const bu_byte* bytes,Endian endian);
-bu_int64 bytes2int64r(const bu_byte* bytes,Endian endian);
+bu_float bytes2floatr(const bu_byte* bytes,bool change_endian);
+bu_double bytes2doubler(const bu_byte* bytes,bool change_endian);
+bu_int16 bytes2int16r(const bu_byte* bytes,bool change_endian);
+bu_int32 bytes2int32r(const bu_byte* bytes,bool change_endian);
+bu_int64 bytes2int64r(const bu_byte* bytes,bool change_endian);
 
-void float2bytesr(bu_float f,bu_byte* det,Endian endian);
-void double2bytesr(bu_double d,bu_byte* det,Endian endian);
-void int162bytesr(bu_int16 i,bu_byte* det,Endian endian);
-void int322bytesr(bu_int32 i,bu_byte* det,Endian endian);
-void int642bytesr(bu_int64 i,bu_byte* det,Endian endian);
+void float2bytesr(bu_float f,bu_byte* det,bool change_endian);
+void double2bytesr(bu_double d,bu_byte* det,bool change_endian);
+void int162bytesr(bu_int16 i,bu_byte* det,bool change_endian);
+void int322bytesr(bu_int32 i,bu_byte* det,bool change_endian);
+void int642bytesr(bu_int64 i,bu_byte* det,bool change_endian);
 
 void reverse2bytes(const bu_byte* bytes,bu_byte* det);
 void reverse4bytes(const bu_byte* bytes,bu_byte* det);
 void reverse8bytes(const bu_byte* bytes,bu_byte* det);
 void reverseNbytes(const bu_byte* bytes,bu_byte* det,bu_size_t n);
 
-void float2bytes(bu_float f,bu_byte* det,Endian endian);
-void double2bytes(bu_double d,bu_byte* det,Endian endian);
-void int162bytes(bu_int16 i,bu_byte* det,Endian endian);
-void int322bytes(bu_int32 i,bu_byte* det,Endian endian);
-void int642bytes(bu_int64 i,bu_byte* det,Endian endian);
+void float2bytes(bu_float f,bu_byte* det,bool change_endian);
+void double2bytes(bu_double d,bu_byte* det,bool change_endian);
+void int162bytes(bu_int16 i,bu_byte* det,bool change_endian);
+void int322bytes(bu_int32 i,bu_byte* det,bool change_endian);
+void int642bytes(bu_int64 i,bu_byte* det,bool change_endian);
 
 bu_byte bit_reverse8(bu_byte data);
 bu_uint16 bit_reverse16(bu_uint16 data);
