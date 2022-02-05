@@ -13,7 +13,7 @@ Naming Rule:
 
 You can quickly search "@section" int IDE to see the different categories of methods
 
-2. spuuort : at least c89,only using stbool std lib.
+2. spuuort : at least c89,only using stdlib.
 */
 
 #include <stdbool.h>
