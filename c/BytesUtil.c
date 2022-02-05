@@ -601,7 +601,29 @@ void int642bytes(bu_int64 i, bu_byte *det, Endian endian)
 }
 
 /* @section 5: bit reverse */
+/*
+0xA : B1010
+0x5 : B0101
+0xC : B1100
+0x3 : B0011
+0xF0 : B1111 0000
+0x0F : B0000 1111
+Iterate from long to short
+eg. 8 bit reverse.
+abcd efgh -> efgh abcd -> ghef cdab -> hgfe dcba
+1.
+abcd efgh -> efgh abcd
+2.
+ef00 ab00 -> 00ef 00ab
+00gh 00cd -> gh00 cd00
+3.
+g0e0 c0a0 -> 0g0e 0c0a
+0h0f 0d0b -> h0f0 d0b0
 
+or iterate from short to long
+eg. 8 bit reverse.
+abcd efgh -> badc fehg -> dcba hgfe -> hgfe dcba
+*/
 /**
  * @brief reverse the bits of a byte.
  *
@@ -610,10 +632,10 @@ void int642bytes(bu_int64 i, bu_byte *det, Endian endian)
  */
 bu_byte bit_reverse8(bu_byte data)
 {
-    data = (((data & 0xaa) >> 1) | ((data & 0x55) << 1));
-    data = (((data & 0xcc) >> 2) | ((data & 0x33) << 2));
-    data = (((data & 0xf0) >> 4) | ((data & 0x0f) << 4));
-    return ((data >> 8) | (data << 8));
+    data=(data>>4)|(data<<4);
+	data=((data&0xcc)>>2)|((data&0x33)<<2);
+	data=((data&0xaa)>>1)|((data&0x55)<<1);
+    return data;
 }
 
 /**
@@ -624,8 +646,11 @@ bu_byte bit_reverse8(bu_byte data)
  */
 bu_uint16 bit_reverse16(bu_uint16 data)
 {
-    data = (((data & 0xaaaa) >> 1) | ((data & 0x5555) << 1));
-    data = (((data & 0xcccc) >> 2) | ((data & 0x3333) << 2));
+    data=(data>>8)|(data<<8);
+    data=((data&0xf0f0)>>4)|((data&0x0f0f)<<4);
+    data=((data&0xcccc)>>2)|((data&0x3333)<<2);
+    data=((data&0xaaaa)>>1)|((data&0x5555)<<1);
+    return data;
 }
 
 /**
