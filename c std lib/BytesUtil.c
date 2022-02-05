@@ -601,10 +601,10 @@ bu_uint16 bit_reverse16(bu_uint16 data)
  */
 bu_uint32 bit_reverse32(bu_uint32 data)
 {
-    data = (((data & 0xaaaaaaaa) >> 1) | ((data & 0x55555555) << 1));
-    data = (((data & 0xcccccccc) >> 2) | ((data & 0x33333333) << 2));
-    data = (((data & 0xf0f0f0f0) >> 4) | ((data & 0x0f0f0f0f) << 4));
-    data = (((data & 0xff00ff00) >> 8) | ((data & 0x00ff00ff) << 8));
+    data = (((data & 0xaaaaaaaaL) >> 1) | ((data & 0x55555555L) << 1));
+    data = (((data & 0xccccccccL) >> 2) | ((data & 0x33333333L) << 2));
+    data = (((data & 0xf0f0f0f0L) >> 4) | ((data & 0x0f0f0f0fL) << 4));
+    data = (((data & 0xff00ff00L) >> 8) | ((data & 0x00ff00ffL) << 8));
     return ((data >> 16) | (data << 16));
 }
 
@@ -616,10 +616,10 @@ bu_uint32 bit_reverse32(bu_uint32 data)
  */
 bu_uint64 bit_reverse64(bu_uint64 data)
 {
-    data = (((data & 0xaaaaaaaaaaaaaaaa) >> 1) | ((data & 0x5555555555555555) << 1));
-    data = (((data & 0xcccccccccccccccc) >> 2) | ((data & 0x3333333333333333) << 2));
-    data = (((data & 0xf0f0f0f0f0f0f0f0) >> 4) | ((data & 0x0f0f0f0f0f0f0f0f) << 4));
-    data = (((data & 0xff00ff00ff00ff00) >> 8) | ((data & 0x00ff00ff00ff00ff) << 8));
-    data = (((data & 0xffff0000ffff0000) >> 16) | ((data & 0x0000ffff0000ffff) << 16));
+    data = (((data & 0xaaaaaaaaaaaaaaaaLL) >> 1) | ((data & 0x5555555555555555LL) << 1));
+    data = (((data & 0xccccccccccccccccLL) >> 2) | ((data & 0x3333333333333333LL) << 2));
+    data = (((data & 0xf0f0f0f0f0f0f0f0LL) >> 4) | ((data & 0x0f0f0f0f0f0f0f0fLL) << 4));
+    data = (((data & 0xff00ff00ff00ff00LL) >> 8) | ((data & 0x00ff00ff00ff00ffLL) << 8));
+    data = (((data & 0xffff0000ffff0000LL) >> 16)| ((data & 0x0000ffff0000ffffLL) << 16));
     return ((data >> 32) | (data << 32));
 }

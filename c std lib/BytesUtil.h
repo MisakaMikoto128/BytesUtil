@@ -35,6 +35,7 @@ You can quickly search "@section" int IDE to see the different categories of met
 #define bu_int64 long long
 #define bu_float float
 #define bu_double double
+#define bu_long_double long double
 
 #define bu_byte bu_uint8
 #define bu_word bu_uint16
@@ -55,7 +56,7 @@ You can quickly search "@section" int IDE to see the different categories of met
 #define bu_int64 long long
 #define bu_float float
 #define bu_double double
-#define bu_byte bu_uint8
+#define bu_long_double long double
 
 #define bu_byte bu_uint8
 #define bu_word bu_uint16
@@ -76,7 +77,7 @@ You can quickly search "@section" int IDE to see the different categories of met
 #define bu_int64 long long
 #define bu_float float
 #define bu_double double
-#define bu_byte bu_uint8
+#define bu_long_double long double
 
 #define bu_byte bu_uint8
 #define bu_word bu_uint16
@@ -97,7 +98,7 @@ You can quickly search "@section" int IDE to see the different categories of met
 #define bu_int64 long long
 #define bu_float float
 #define bu_double double
-#define bu_byte bu_uint8
+#define bu_long_double long double
 
 #define bu_byte bu_uint8
 #define bu_word bu_uint16
