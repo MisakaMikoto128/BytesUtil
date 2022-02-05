@@ -66,10 +66,7 @@ bu_float bytes2floatr(const bu_byte *bytes, Endian endian)
     }
     else
     {
-        u.b[0] = bytes[0];
-        u.b[1] = bytes[1];
-        u.b[2] = bytes[2];
-        u.b[3] = bytes[3];
+        *((bu_float*)&u) = *((bu_float*)bytes);
     }
     return u.f;
 }
@@ -103,14 +100,7 @@ bu_double bytes2doubler(const bu_byte *bytes, Endian endian)
     }
     else
     {
-        u.b[0] = bytes[0];
-        u.b[1] = bytes[1];
-        u.b[2] = bytes[2];
-        u.b[3] = bytes[3];
-        u.b[4] = bytes[4];
-        u.b[5] = bytes[5];
-        u.b[6] = bytes[6];
-        u.b[7] = bytes[7];
+        *((bu_double*)&u) = *((bu_double*)bytes);
     }
 }
 
@@ -137,8 +127,7 @@ bu_int16 bytes2int16r(const bu_byte *bytes, Endian endian)
     }
     else
     {
-        u.b[0] = bytes[0];
-        u.b[1] = bytes[1];
+        *((bu_int16*)&u) = *((bu_int16*)bytes);
     }
     return u.i;
 }
@@ -168,10 +157,7 @@ bu_int32 bytes2int32r(const bu_byte *bytes, Endian endian)
     }
     else
     {
-        u.b[0] = bytes[0];
-        u.b[1] = bytes[1];
-        u.b[2] = bytes[2];
-        u.b[3] = bytes[3];
+        *((bu_int32*)&u) = *((bu_int32*)bytes);
     }
     return u.i;
 }
@@ -205,14 +191,7 @@ bu_int64 bytes2int64r(const bu_byte *bytes, Endian endian)
     }
     else
     {
-        u.b[0] = bytes[0];
-        u.b[1] = bytes[1];
-        u.b[2] = bytes[2];
-        u.b[3] = bytes[3];
-        u.b[4] = bytes[4];
-        u.b[5] = bytes[5];
-        u.b[6] = bytes[6];
-        u.b[7] = bytes[7];
+        *((bu_int64*)&u) = *((bu_int64*)bytes);
     }
 }
 
@@ -238,10 +217,7 @@ void bytes2floatp(const bu_byte *bytes, bu_float *dst, Endian endian)
     }
     else
     {
-        dst[0] = bytes[0];
-        dst[1] = bytes[1];
-        dst[2] = bytes[2];
-        dst[3] = bytes[3];
+        *((bu_float*)dst) = *((bu_float*)bytes);
     }
 }
 
@@ -270,14 +246,7 @@ void bytes2doublep(const bu_byte *bytes, bu_double *dst, Endian endian)
     }
     else
     {
-        dst[0] = bytes[0];
-        dst[1] = bytes[1];
-        dst[2] = bytes[2];
-        dst[3] = bytes[3];
-        dst[4] = bytes[4];
-        dst[5] = bytes[5];
-        dst[6] = bytes[6];
-        dst[7] = bytes[7];
+        *((bu_double*)dst) = *((bu_double*)bytes);
     }
 }
 
@@ -300,8 +269,7 @@ void bytes2int16p(const bu_byte *bytes, bu_int16 *dst, Endian endian)
     }
     else
     {
-        dst[0] = bytes[0];
-        dst[1] = bytes[1];
+        *((bu_int16*)dst) = *((bu_int16*)bytes);
     }
 }
 
@@ -326,10 +294,7 @@ void bytes2int32p(const bu_byte *bytes, bu_int32 *dst, Endian endian)
     }
     else
     {
-        dst[0] = bytes[0];
-        dst[1] = bytes[1];
-        dst[2] = bytes[2];
-        dst[3] = bytes[3];
+        *((bu_int32*)dst) = *((bu_int32*)bytes);
     }
 }
 
@@ -358,14 +323,7 @@ void bytes2int64p(const bu_byte *bytes, bu_int64 *dst, Endian endian)
     }
     else
     {
-        dst[0] = bytes[0];
-        dst[1] = bytes[1];
-        dst[2] = bytes[2];
-        dst[3] = bytes[3];
-        dst[4] = bytes[4];
-        dst[5] = bytes[5];
-        dst[6] = bytes[6];
-        dst[7] = bytes[7];
+        *((bu_int64*)dst) = *((bu_int64*)bytes);
     }
 }
 
@@ -465,10 +423,7 @@ void float2bytes(bu_float f, bu_byte *det, Endian endian)
     }
     else
     {
-        det[0] = p[0];
-        det[1] = p[1];
-        det[2] = p[2];
-        det[3] = p[3];
+        *((bu_float*)det) = f;
     }
 }
 
@@ -498,14 +453,7 @@ void double2bytes(bu_double d, bu_byte *det, Endian endian)
     }
     else
     {
-        det[0] = p[0];
-        det[1] = p[1];
-        det[2] = p[2];
-        det[3] = p[3];
-        det[4] = p[4];
-        det[5] = p[5];
-        det[6] = p[6];
-        det[7] = p[7];
+        *((bu_double*)det) = d;
     }
 }
 
@@ -529,8 +477,7 @@ void int162bytes(bu_int16 i, bu_byte *det, Endian endian)
     }
     else
     {
-        det[0] = p[0];
-        det[1] = p[1];
+        *((bu_int16*)det) = i;
     }
 }
 
@@ -556,10 +503,7 @@ void int322bytes(bu_int32 i, bu_byte *det, Endian endian)
     }
     else
     {
-        det[0] = p[0];
-        det[1] = p[1];
-        det[2] = p[2];
-        det[3] = p[3];
+        *((bu_int32*)det) = i;
     }
 }
 
@@ -589,14 +533,7 @@ void int642bytes(bu_int64 i, bu_byte *det, Endian endian)
     }
     else
     {
-        det[0] = p[0];
-        det[1] = p[1];
-        det[2] = p[2];
-        det[3] = p[3];
-        det[4] = p[4];
-        det[5] = p[5];
-        det[6] = p[6];
-        det[7] = p[7];
+        *((bu_int64*)det) = i;
     }
 }
 
