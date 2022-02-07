@@ -3,15 +3,13 @@
 /**
  * @brief  get the endian of the system using the data ENDIA_JUDGE_DATA.
  *
- * @param data : the data to be judged.It must be ENDIA_JUDGE_DATA come from other system.
+ * @param data : ENDIA_JUDGE_DATA bytes come from other system.
  * @return Endian
  *
- * @attention the input data must be ENDIA_JUDGE_DATA come from other system.
  */
-Endian getEndian(bu_uint32 data)
+Endian getEndian(const bu_byte * data)
 {
-    bu_byte *p = (bu_byte *)&data;
-    if (p[0] == 0x04)
+    if (data[0] == 0x04)
     {
         return LITTLE_ENDIAN;
     }

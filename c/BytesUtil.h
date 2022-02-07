@@ -117,11 +117,12 @@ typedef enum {
 
 /**
  * @brief  get the endian of the system using the data ENDIA_JUDGE_DATA.
- * 
- * @param data : the data to be judged.It must be ENDIA_JUDGE_DATA come from other system.
- * @return Endian 
+ *
+ * @param data : ENDIA_JUDGE_DATA bytes come from other system.
+ * @return Endian
+ *
  */
-Endian getEndian(bu_uint32 data);
+Endian getEndian(const bu_byte * data);
 
 /**
  * @brief get self endian.
