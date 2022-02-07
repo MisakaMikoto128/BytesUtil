@@ -155,12 +155,12 @@ classdef BytesUtil < handle
         end
         
         %@return LITTLE_ENDIAN = 0,BIG_ENDIAN = 1
-        %the input data must be ENDIA_JUDGE_DATA come from other system.
+        %the input data must be ENDIA_JUDGE_DATA bytes come from other system.
         function endian = getEndian(data)
-            if(~isa(data,'uint32'))
-                error('[Error]The input type must be uint32!\n');
+            if(~isa(data,'uint8'))
+                error('[Error]The input type must be uint8!\n');
             end
-            ENDIA_JUDGE_BYTES = typecast(data,'uint8');
+            ENDIA_JUDGE_BYTES = data;
             endian = ENDIA_JUDGE_BYTES(1) ~= uint8(04);
         end
 
