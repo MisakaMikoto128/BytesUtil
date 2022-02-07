@@ -269,6 +269,5 @@ public class BytesUtil {
         System.out.printf("%#x \n", getShort(bytes, 0));
         System.out.printf("%#x \n", getShort(bytes, 0, ByteOrder.LITTLE_ENDIAN));
         System.out.printf("%#x \n", getShort(bytes, 0, ByteOrder.BIG_ENDIAN));
-
     }
 }
