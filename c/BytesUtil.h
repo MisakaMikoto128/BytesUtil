@@ -113,6 +113,7 @@ typedef enum {
     LITTLE_ENDIAN = 0,
     BIG_ENDIAN = 1
 }Endian;
+
 #define ENDIA_JUDGE_DATA 0x20220204
 
 /**
@@ -472,12 +473,33 @@ bu_uint64 bit_reverse64(bu_uint64 data);
         dst[7] = src[0]; \
     } while(0)
 
-
+#define REVERSE_16_BYTES_P(dst, src) \
+    do{ \
+        dst[0] = src[15]; \
+        dst[1] = src[14]; \
+        dst[2] = src[13]; \
+        dst[3] = src[12]; \
+        dst[4] = src[11]; \
+        dst[5] = src[10]; \
+        dst[6] = src[9]; \
+        dst[7] = src[8]; \
+        dst[8] = src[7]; \
+        dst[9] = src[6]; \
+        dst[10] = src[5]; \
+        dst[11] = src[4]; \
+        dst[12] = src[3]; \
+        dst[13] = src[2]; \
+        dst[14] = src[1]; \
+        dst[15] = src[0]; \
+    } while(0)
+    
 #define REVERSE_2_BYTES_R(value) (((value) >> 8) | ((value) << 8))
 
 #define REVERSE_4_BYTES_R(value) (((value) >> 24) | (((value) >> 8) & 0x0000FF00L) | (((value) << 8) & 0x00FF0000L) | ((value) << 24))
 
 #define REVERSE_8_BYTES_R(value) (((value) >> 56) | (((value) >> 40) & 0x000000000000FF00LL) | (((value) >> 24) & 0x0000000000FF0000LL) | (((value) >> 8) & 0x00000000FF000000LL) | (((value) << 8) & 0x000000FF00000000LL) | (((value) << 24) & 0x0000FF0000000000LL) | (((value) << 40) & 0x00FF000000000000LL) | ((value) << 56))
+
+#define CAST_2_CONST_BYTE_P(obj) ((const bu_byte *)(obj))
 
 #ifdef __cplusplus
 }
